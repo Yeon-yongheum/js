@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>clicked</title>
+</head>
+<body>
+    <h1>0</h1>
+    <button id="change-btn">Click it</button>
+    <script>
+        const button = document.querySelector('#change-btn')
+        const header = document.querySelector('h1')
+        console.log(header.c)
+        let clickCounter = 0
+        button.addEventListener('click', function(event){
+            clickCounter += 1
+            console.log(clickCounter)
+            header.innerText = clickCounter
+        })
+    </script>
+</body>
+</html>
