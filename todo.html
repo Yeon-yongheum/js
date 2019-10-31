@@ -7,20 +7,26 @@
     <title>Document</title>
     <style>
     h1 {
-        font-size: 5rem;
+      font-size: 5rem;
+    }
+    h2 {
+      font-size: 3rem;
+    }
+    h1, h2, h3, form, ul {
+      text-align: center;
+      color: white;
     }</style>
 </head>
 <body>
     <!-- <img src="https://source.unsplash.com/1600x900/?nature,water" alt="배경화면" class="bg"> -->
-    <h1 >Todo List</h1>
-    <h2 id="time"></h2>
+    <h1 id="time"></h1>
+    <h2 >Todo List</h2>
     <form action="" id="form">
         <label for="input">할 일을 입력하세요</label>
         <input type="text" id="input">
-        <button id="input-button">+</button>
+        <button id="input-button" type="submit">+</button>
     </form>
     <ul id="todo-list">
-        <li>+버트이 눌리면 리스트에 추가되오록 구현하세요.</li>
     </ul>
     
     
