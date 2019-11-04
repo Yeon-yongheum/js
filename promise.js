@@ -93,3 +93,73 @@ promise2
         console.log('error')
         console.log(error)        
     })
+    
+
+
+// chaining
+function getDataPromise(){
+    return new Promise(resolve => {
+        setTimeout(function (){
+            console.log('요청을 보냈습니다.')
+            const data = {'data': 'some data'} // 데이터 도착
+            resolve(data)// 내가 원하는 작업을 시작
+        }, 1000)
+    })
+}
+getDataPromise()
+    .then(response => { // response = data
+        console.log(response) // {'data': 'some data'}
+        return response.data // 'some data'
+    })
+    .then(data => { // data = 'some data'
+        console.log(data) // 'some data'
+    })
+    .catch(error =>{
+        console.log(error)
+    })
+
+
+
+// chaining
+axios.get('https://jsonplaceholder.typicode.com/posts/1')
+    .then(response => {
+        console.log(response)
+        return response.data.userId
+    })
+    .then(userId =>{
+        return axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
+    })
+    .then(response =>{
+        console.log(response)
+        console.log(response.data.name)
+    })
+
+
+
+// 5. async / await -> 동기 작업인척 하기 + promise
+function getDataPromise(){
+    return new Promise(resolve => {
+        setTimeout(function (){
+            console.log('요청을 보냈습니다.')
+            const data = {'data': 'some data'} // 데이터 도착
+            resolve(data)// 내가 원하는 작업을 시작
+        }, 1000)
+    })
+}
+async function printData() {
+    const response = await getDataPromise()
+    console.log(response)
+}
+
+async function printUser() {
+    try{ // resolve 호출 되면
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
+        const userId = response.data.userId
+        console.log(userId)
+        const response1 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        const name = response1.data.name
+        console.log(name)
+    } catch(error) {
+        console.log(error) // reject 호출 되면,
+    }
+}
